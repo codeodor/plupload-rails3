@@ -14,7 +14,17 @@ Example
 
 In your view:
 
-   <%= plupload(@library_file, :payload, {:params=>{:library_file=>{:title=>"some title"}}}) %>
+    <%= plupload(@library_file, :payload, {:params=>{:library_file=>{:title=>"some title"}}}) %>
+
+
+@library_file should be your model, where :payload is the method which holds the file contents, so that when plupload uploads the files (it hits #create once for each file) it will put the uploaded file in params[:library_file][:payload] which you can then read like this in your controller:
+
+    params[:library_file][:payload] = params[:library_file][:payload].read
+
+Then if you're storing it in the DB, you let it continue on to 
+
+    @library_file = LibraryFile.new(params[:library_file])
+
 
 
 
