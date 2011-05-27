@@ -1,6 +1,10 @@
 plupload-rails3
 ==============
 
+[Plupload](http://www.plupload.com/) lets you upload multiple files at a time and even allows drag and drop from the local file system into the browser (with Firefox and Safari).
+
+This plugin tries to make its integration with Rails 3 very simple.
+
 To install:
 
     rails plugin install git://github.com/codeodor/plupload-rails3.git
