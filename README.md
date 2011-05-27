@@ -22,7 +22,7 @@ Options can be:
 
 Example filter: 
     
-    :filters=>[{:title=>'JPG Images', :extensions=>'jpg'},{:title=>'PDF', :extensions=>'pdf'}])
+    :filters=>[{:title=>'Images', :extensions=>'jpg,gif,png'},{:title=>'PDF', :extensions=>'pdf'}])
 
 The plupload code in lib/app/views/plupload/_uploader_scripts.html.erb is from http://www.theroamingcoder.com/node/50, where I learned how to use Plupload with Rails.
 
