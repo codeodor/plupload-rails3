@@ -18,7 +18,11 @@ Options can be:
 * :params => A hash of params you want submitted with each uploaded file.
 * :plupload_container => The name of the div or whatever where plupload is going to render itself. Defaults to 'uploader'
 * :max_file_size => An integer indicating the number of megabytes to allow. Defaults to 10.
-* :filters => An array of hashes with :title and :extension keys specifying the files to look for.
+* :filters => An array of hashes with :title and :extension keys specifying the files to look for. Defaults to [], which will show all files. 
+
+Example filter: 
+    
+    :filters=>[{:title=>'JPG Images', :extensions=>'jpg'},{:title=>'PDF', :extensions=>'pdf'}])
 
 The plupload code in lib/app/views/plupload/_uploader_scripts.html.erb is from http://www.theroamingcoder.com/node/50, where I learned how to use Plupload with Rails.
 
