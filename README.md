@@ -1,7 +1,7 @@
 plupload-rails3
 ==============
 
-  rails plugin install git://github.com/codeodor/plupload-rails3.git
+    rails plugin install git://github.com/codeodor/plupload-rails3.git
 
 
 The PlUpload code in lib/app/views/plupload/_uploader_scripts.html.erb is from http://www.theroamingcoder.com/node/50, where I learned how to use Plupload with Rails.
