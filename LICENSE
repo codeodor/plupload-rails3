@@ -1,4 +1,4 @@
-Copyright (c) 2011 Sammy Larbi
+Copyright (c) 2011 Sammy Larbi MIT License for plupload-rails3:
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -18,3 +18,21 @@ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
 LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+-------------------
+
+Plupload and components Licenses:
+
+Plupload uses GPLv2, and its Silverlight components use:
+
+FJCore (MIT License) (http://code.google.com/p/fjcore/) that includes 
+The Independent JPEG Group's JPEG software (IJG.txt) and 
+Java Advanced Imaging IO by Sun Microsystems (JAI.txt)
+
+PngEncoder (http://www.gnu.org/licenses/lgpl-2.1.txt)
+
+ZipLib (http://www.icsharpcode.net/OpenSource/SharpZipLib/)
+
+-------------------
+
+JQuery lets you choose between MIT and GPL licenses.

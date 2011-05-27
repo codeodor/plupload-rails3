@@ -1,7 +1,9 @@
 PluploadRails3
 ==============
 
-Introduction goes here.
+
+
+Most code in the view is from http://www.theroamingcoder.com/node/50, where I learned how to use Plupload with Rails.
 
 
 Example
@@ -10,4 +12,5 @@ Example
 Example goes here.
 
 
-Copyright (c) 2011 Sammy Larbi, released under the MIT license
+Copyright (c) 2011 Sammy Larbi, released under the MIT license 
+(with Plupload and it's components using other licenses -- see LICENSE file)
