@@ -12,7 +12,10 @@ The PlUpload code in lib/app/views/plupload/_uploader_scripts.html.erb is from h
 Example
 =======
 
-Example goes here.
+In your view:
+
+   <%= plupload(@library_file, :payload, {:params=>{:library_file=>{:title=>"some title"}}}) %>
+
 
 
 Copyright (c) 2011 Sammy Larbi, released under the MIT license 
