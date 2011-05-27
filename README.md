@@ -30,6 +30,9 @@ In your view:
 
     <%= plupload(@library_file, :payload, {:params=>{:library_file=>{:title=>"some title"}}}) %>
 
+Also in the view, you'll need to tell it where to go:
+
+    <div id="uploader" name="uploader" style="width: 100%;"></div>
 
 @library_file should be your model, where :payload is the method which holds the file contents, so that when plupload uploads the files (it hits #create once for each file) it will put the uploaded file in params[:library_file][:payload] which you can then read like this in your controller:
 
