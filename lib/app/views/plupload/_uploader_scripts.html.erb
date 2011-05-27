@@ -1,0 +1,67 @@
+
+<!-- Load Queue widget CSS and jQuery -->
+<style type="text/css">@import url(/stylesheets/plupload.queue.css);</style>
+
+
+
+
+<!-- Load plupload and all it's runtimes and finally the jQuery queue widget -->
+<script type="text/javascript" src="/javascripts/plupload/js/plupload.full.js"></script>
+<script type="text/javascript" src="/javascripts/plupload/js/jquery.plupload.queue/jquery.plupload.queue.js"></script>
+
+<!-- Thirdparty intialization scripts, needed for the Google Gears and BrowserPlus runtimes -->
+<script type="text/javascript" src="http://bp.yahooapis.com/2.4.21/browserplus-min.js"></script>
+<script type="text/javascript" src="/javascripts/plupload/js/plupload.gears.js"></script>
+
+
+<script type="text/javascript">
+  	
+  // Convert divs to queue widgets when the DOM is ready
+  $(function() {   
+    var authtoken = $("input[name=authenticity_token]").val();
+    $("#uploader").pluploadQueue({
+      // General settings
+      runtimes : 'html5,flash,silverlight,gears,browserplus',
+      url : '<%= url_for(model_object) %>',
+      max_file_size : '10mb',
+      //chunk_size : '1mb',
+      //unique_names : true,
+      multipart: true,
+      multipart_params : $.extend( {'<%= CGI::unescape(options[:params].to_query.split("=").join("':'")) %>'}, {authenticity_token : authtoken, "_method" : "<%= model_object.new_record? ? 'post' : 'put' %>", "_plupload_upload" : "<%= model_object.class.name.underscore.downcase %>[<%= model_object_method %>]"}),
+      filters : [
+        {title : "Image files", extensions : "jpg,gif,png"},
+        {title : "Zip files", extensions : "zip"},
+        {title : "Adobe Files", extensions : "pdf,ai"}
+      ],
+
+      // Flash settings
+      flash_swf_url : '/javascripts/plupload/js/plupload.flash.swf',
+
+      // Silverlight settings
+      silverlight_xap_url : '/javascripts/plupload/js/plupload.silverlight.xap'
+    });
+
+    // Client side form validation
+    /*$('new_library_asset').submit(function(e) {
+      alert("validating");
+      var uploader = $('#uploader').pluploadQueue();
+	
+      // Validate number of uploaded files
+      if (uploader.total.uploaded == 0) {
+        // Files in queue upload them first
+        if (uploader.files.length > 0) {
+          // When all files are uploaded submit form
+          uploader.bind('UploadProgress', function() {
+            if (uploader.total.uploaded == uploader.files.length)
+              $('new_library_asset').submit();
+          });
+			
+          uploader.start();
+        } else
+          alert('You must at least upload one file.');
+
+        e.preventDefault();
+      }
+    });*/
+  });
+</script>
