@@ -30,11 +30,7 @@
       //unique_names : true,
       multipart: true,
       multipart_params : $.extend( {'<%= CGI::unescape(options[:params].to_query.split("=").join("':'")) %>'}, {authenticity_token : authtoken, "_method" : "<%= model_object.new_record? ? 'post' : 'put' %>", "_plupload_upload" : "<%= model_object.class.name.underscore.downcase %>[<%= model_object_method %>]"}),
-      filters : [
-        {title : "Image files", extensions : "jpg,gif,png"},
-        {title : "Zip files", extensions : "zip"},
-        {title : "Adobe Files", extensions : "pdf,ai"}
-      ],
+      filters : <%= options[:filters].to_json.to_s %>,
 
       // Flash settings
       flash_swf_url : '/javascripts/plupload-rails3/plupload/js/plupload.flash.swf',
