@@ -14,6 +14,7 @@ To use:
 
 
 Options can be:
+
 * :params - A hash of params you want submitted with each uploaded file.
 * :plupload_container - The name of the div or whatever where plupload is going to render itself. Defaults to 'uploader'
 * :max_file_size - An integer indicating the number of megabytes to allow. Defaults to 10.
