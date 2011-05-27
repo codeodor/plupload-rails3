@@ -1,6 +1,8 @@
 plupload-rails3
 ==============
 
+To install:
+
     rails plugin install git://github.com/codeodor/plupload-rails3.git
 
 
