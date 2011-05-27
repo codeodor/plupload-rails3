@@ -1,7 +1,7 @@
 <!-- load JQuery if not loaded -->
 <script type="text/javascript" src="http://www.google.com/jsapi"></script>
 <script type="text/javascript">
-  if !(jquery) google.load("jquery", "1.3");
+  if(typeof jQuery === 'undefined') google.load("jquery", "1.3");
 </script>
 
 <!-- Load Queue widget CSS and jQuery -->
