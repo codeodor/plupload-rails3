@@ -53,5 +53,5 @@ Then if you're storing it in the DB, you let it continue on to
 
 
 
-Copyright (c) 2011 Sammy Larbi, released under the MIT license 
+Copyright (c) 2011 [Sammy Larbi](http://www.codeodor.com), released under the MIT license 
 (with Plupload and it's components using other licenses -- see LICENSE file)
