@@ -21,11 +21,11 @@
   // Convert divs to queue widgets when the DOM is ready
   $(function() {   
     var authtoken = $("input[name=authenticity_token]").val();
-    $("#uploader").pluploadQueue({
+    $("#<%= options[:plupload_container] %>").pluploadQueue({
       // General settings
       runtimes : 'html5,flash,silverlight,gears,browserplus',
       url : '<%= url_for(model_object) %>',
-      max_file_size : '10mb',
+      max_file_size : '<%= options[:max_file_size] %>mb',
       //chunk_size : '1mb',
       //unique_names : true,
       multipart: true,
