@@ -5,7 +5,7 @@ plupload-rails3
 
 This plugin tries to make its integration with Rails 3 very simple.
 
-To install:
+To install (from inside your project's directory):
 
     rails plugin install git://github.com/codeodor/plupload-rails3.git
 
