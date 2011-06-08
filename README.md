@@ -12,7 +12,7 @@ To install (from inside your project's directory):
 
 To use:
 
-    <%= plupload(model, method, options={:plupload_container=>'uploader'} %>
+    <%= plupload(model, method, options={:plupload_container=>'uploader'}) %>
     <div id="uploader" name="uploader" style="width: 100%;"></div>
    
 
