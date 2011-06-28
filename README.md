@@ -16,6 +16,8 @@ To use:
     <div id="uploader" name="uploader" style="width: 100%;"></div>
    
 
+If you are using a nested resource, model can be an array like you'd use for url_for. For example: `model = [@folder, @file]` where `@file` is the model you're interested in uploading, but it is nested under @folder.
+
 
 Options can be:
 
