@@ -25,10 +25,15 @@ Options can be:
 * :plupload_container => The name of the div or whatever where plupload is going to render itself. Defaults to 'uploader'
 * :max_file_size => An integer indicating the number of megabytes to allow. Defaults to 10.
 * :filters => An array of hashes with :title and :extension keys specifying the files to look for. Defaults to [], which will show all files. 
+* :pluploader => a value of `true` indicates that you want to have the files submitted with your form instead of in individual requests. To make this work, you need to add `match 'plupload_rails/_plupload_uploader', :controller=>'plupload_rails', :action=>'_plupload_uploader', :as=>'pluploader'` to your config/routes.rb file so plupload can upload the files, and then this plugin will insert some extra form fields into your page via JavaScript. Those fields tell the middleware how to form the request parameters before they get to your controller.
 
 Example filter: 
     
     :filters=>[{:title=>'Images', :extensions=>'jpg,gif,png'},{:title=>'PDF', :extensions=>'pdf'}])
+
+Example of using the pluploader instead of your controller:
+
+    <%= plupload([@album, @album.photos], :photos, {:plupload_container=>'uploader', :pluploader=>true}) %>
 
 The plupload code in lib/app/views/plupload/_uploader_scripts.html.erb is from http://www.theroamingcoder.com/node/50, where I learned how to use Plupload with Rails.
 

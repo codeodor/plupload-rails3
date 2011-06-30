@@ -1,6 +1,6 @@
 require 'plupload_rails3'
 
-%w{ middleware helpers }.each do |dir|
+%w{ middleware helpers controllers }.each do |dir|
   path = File.join(File.dirname(__FILE__), 'app', dir)
   $LOAD_PATH << path
   ActiveSupport::Dependencies.autoload_paths << path

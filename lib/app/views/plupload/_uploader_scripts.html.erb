@@ -24,7 +24,11 @@
     $("#<%= options[:plupload_container] %>").pluploadQueue({
       // General settings
       runtimes : 'html5,flash,silverlight,gears,browserplus',
-      url : '<%= url_for(model_object) %>',
+      <% unless options[:pluploader] %>
+        url : '<%= url_for(model_object) %>',
+      <% else %>
+        url : '<%= pluploader_path %>',
+      <% end %>
       max_file_size : '<%= options[:max_file_size] %>mb',
       //chunk_size : '1mb',
       //unique_names : true,
@@ -38,6 +42,13 @@
 
       // Silverlight settings
       silverlight_xap_url : '/javascripts/plupload-rails3/plupload/js/plupload.silverlight.xap'
+      <% if options[:pluploader] %>
+      , 
+      init: {
+        FileUploaded: function(up, file, info) {
+          eval(info.response);
+        }
+      <% end 
     });
 
   });
