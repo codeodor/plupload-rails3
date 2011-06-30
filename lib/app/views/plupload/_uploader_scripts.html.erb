@@ -33,14 +33,20 @@
       //chunk_size : '1mb',
       //unique_names : true,
       multipart: true,
-      multipart_params : $.extend( {<% if options[:params].count > 0 %>'<%= CGI::unescape(options[:params].to_query.split("=").join("':'")) %>'<% end %>}, {authenticity_token : authtoken, "_method" : "<%= [model_object].flatten.pop.new_record? ? 'post' : 'put' %>", "_plupload_upload" : "<%= [model_object].flatten.pop.class.name.underscore.downcase %>[<%= model_object_method %>]"}),
+      multipart_params : 
+      $.extend({
+          <% if options[:params].count > 0 %>'<%= CGI::unescape(options[:params].to_query.split("=").join("':'")) %>'<% end %>
+        }, 
+        {
+          authenticity_token : authtoken, 
+          "_method" : "<%= [model_object].flatten.pop.new_record? ? 'post' : 'put' %>", 
+          "_plupload_upload" : "<%= [model_object].flatten.pop.class.name.underscore.downcase %>[<%= model_object_method %>]"
+        }
+      ),
       <% if options[:filters].count > 0 %>
         filters : <%= options[:filters].to_json.to_s.html_safe %>,
       <% end %>
-      // Flash settings
       flash_swf_url : '/javascripts/plupload-rails3/plupload/js/plupload.flash.swf',
-
-      // Silverlight settings
       silverlight_xap_url : '/javascripts/plupload-rails3/plupload/js/plupload.silverlight.xap'
       <% if options[:pluploader] %>
       , 
@@ -48,6 +54,7 @@
         FileUploaded: function(up, file, info) {
           eval(info.response);
         }
+      }
       <% end %>
     });
 
