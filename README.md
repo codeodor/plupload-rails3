@@ -58,17 +58,20 @@ Then if you're storing it in the DB, you let it continue on to
     @library_file = LibraryFile.new(params[:library_file])
 
 
-Example 2: Uploading the files for a has_many relationship
-==========================================================
+Example 2: Uploading the files for a has_many relationship with accepts_nested_attributes_for
+=============================================================================================
 Consider the common case of an Album which has_many Photos. 
 
-In your form, you can use:
+In your form for an album, you can use:
 
-    <%= plupload(@print_production_form, :print_production_files, options={:plupload_container=>'uploader', :pluploader=>true, :field_name=>'album[photos][][payload]'}) %>
+    <%= plupload(@album, :photos, options={:plupload_container=>'uploader', :pluploader=>true, :field_name=>'album[photos][][payload]'}) %>
   <div id="uploader" name="uploader" style="width: 100%;"></div>
 
 
 What this does is tells the plugin to use the pluploader (which needs a route: `match 'plupload_rails/_plupload_uploader', :controller=>'plupload_rails', :action=>'_plupload_uploader', :as=>'pluploader'`) and tells it what to name the field - in this case the Album `has_many` Photos, and the method we want on photo is called `payload`.
+
+
+
 
 
 Copyright (c) 2011 [Sammy Larbi](http://www.codeodor.com), released under the MIT license 
