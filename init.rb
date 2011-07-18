@@ -11,4 +11,4 @@ ActionController::Base.append_view_path File.expand_path(File.join(File.dirname(
 
 ActionView::Base.send :include, PluploadHelper
 
-config.middleware.insert_before 'ActionDispatch::ParamsParser', 'PluploadParamsRenamer'
+config.middleware.insert_before 'ActionDispatch::ParamsParser', 'ActionDispatch::PluploadParamsRenamer'
