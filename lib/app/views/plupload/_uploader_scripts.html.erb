@@ -40,7 +40,7 @@
         {
           authenticity_token : authtoken, 
           "_method" : "<%= [model_object].flatten.pop.new_record? ? 'post' : 'put' %>", 
-          "_plupload_upload" : "<%= [model_object].flatten.pop.class.name.underscore.downcase %>[<%= model_object_method %>]"
+          "_plupload_upload" : "<%= options[:field_name] %>"
         }
       ),
       <% if options[:filters].count > 0 %>

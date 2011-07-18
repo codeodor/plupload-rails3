@@ -9,6 +9,7 @@ class PluploadParamsRenamer
     req = Rack::Request.new(env)
     if req.POST["_plupload_upload"]
       object, method = req.params["_plupload_upload"].split(/[\[\]]/)
+      submethod =  req.params["_plupload_upload"].split(/[\[\]]/)[-1]
       req.params[object] ||= {} 
       if req.POST["_plupload_files"]
         req.params[object][method] = []
@@ -21,7 +22,7 @@ class PluploadParamsRenamer
           
           uploaded_file = ActionDispatch::Http::UploadedFile.new(:tempfile=>File.new(file), :content_type=>content_type, :filename=>original_filename)
           
-          req.params[object][method] << {:picture=>uploaded_file}
+          req.params[object][method] << {submethod=>uploaded_file}
         end
       else
         req.params[object][method] = req.params["file"] 
