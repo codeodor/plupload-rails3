@@ -1,3 +1,4 @@
+<% if Rails.version < "3.1" %>
 <!-- load JQuery if not loaded -->
 <script type="text/javascript" src="http://www.google.com/jsapi"></script>
 <script type="text/javascript">
@@ -14,6 +15,15 @@
 <!-- Thirdparty intialization scripts, needed for the Google Gears and BrowserPlus runtimes -->
 <script type="text/javascript" src="http://bp.yahooapis.com/2.4.21/browserplus-min.js"></script>
 <script type="text/javascript" src="/javascripts/plupload-rails3/plupload/js/plupload.gears.js"></script>
+<% else %>
+  
+  <style type="text/css">@import url(/assets/plupload-rails3/plupload.queue.3.1.css);</style>
+  <%= stylesheet_link_tag 'plupload-rails3/plupload/js/plupload.full.js' %>
+  <%= javascript_include_tag 'plupload-rails3/plupload/js/plupload.full.js' %>
+  <%= javascript_include_tag 'plupload-rails3/plupload/js/jquery.plupload.queue/jquery.plupload.queue.js' %>
+  <%= javascript_include_tag 'plupload-rails3/plupload/js/plupload.gears.js' %>
+  
+<% end %>
 
 
 <script type="text/javascript">

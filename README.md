@@ -5,9 +5,33 @@ plupload-rails3
 
 This plugin tries to make its integration with Rails 3 very simple.
 
-To install (from inside your project's directory):
+To install as a plugin (from inside your project's directory):
 
     rails plugin install git://github.com/codeodor/plupload-rails3.git
+
+To remove the plugin:
+
+    rails plugin uninstall plupload-rails3
+
+
+To install as a gem:
+
+1. Put `gem 'plupload-rails3'` in your application's Gemfile
+2. Run `bundle install` from the command line inside your application's directory
+3. Run `bundle exec rake plupload_rails3:install_assets` from the command line inside your application's directory
+
+To remove the gem from your project, remove the line in your Gemfile. You can remove the assets that got copied to your application by running `bundle exec rake plupload_rails3:uninstall_assets` from the command line inside your application's directory.
+
+For Rails 3.1, you'll also need to tell the asset pipeline about the new assets. 
+
+In assets/javascripts/application.js make sure your application provides URL access to the plupload scripts, CSS, and images:
+
+    //= provide_tree ../../../vendor/assets/javascripts/plupload-rails3
+    //= provide_tree ../../../vendor/assets/stylesheets/plupload-rails3
+    //= provide_tree ../../../vendor/assets/images/plupload-rails3
+
+
+    
 
 
 To use:
