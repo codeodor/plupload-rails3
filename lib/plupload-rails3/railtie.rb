@@ -1,7 +1,7 @@
 module PluploadRails3
   class Railtie < Rails::Railtie
     initializer "plupload-rails3.configure_middleware" do |app|
-      app.middleware.insert_before(ActionDispatch::ParamsParser, ActionDispatch::PluploadParamsRenamer)
+      app.middleware.use ActionDispatch::PluploadParamsRenamer
     end
     
     rake_tasks do

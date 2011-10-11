@@ -7,25 +7,28 @@ module ActionDispatch
    
     def call(env)
       req = Rack::Request.new(env)
-      if req.POST["_plupload_upload"]
-        object, method = req.params["_plupload_upload"].split(/[\[\]]/)
-        submethod =  req.params["_plupload_upload"].split(/[\[\]]/)[-1]
-        req.params[object] ||= {} 
-        if req.POST["_plupload_files"]
-          req.params[object][method] = []
-          req.POST["_plupload_files"].each_with_index do |file, i|
+      form_hash = Rails.version < "3.1" ? req.POST : env['rack.request.form_hash']
+      form_hash ||= {}
+      
+      if form_hash["_plupload_upload"]
+        object, method = form_hash["_plupload_upload"].split(/[\[\]]/)
+        submethod =  form_hash["_plupload_upload"].split(/[\[\]]/)[-1]
+        form_hash[object] ||= {} 
+        if form_hash["_plupload_files"]
+          form_hash[object][method] = []
+          form_hash["_plupload_files"].each_with_index do |file, i|
             plupload_temp_path = "tmp/plupload-rails3/#{File.basename(file)}"
             FileUtils.mv(plupload_temp_path, file)
 
-            original_filename = req.POST["_plupload_original_names"][i]
-            content_type = req.POST["_plupload_content_types"][i]
+            original_filename = form_hash["_plupload_original_names"][i]
+            content_type = form_hash["_plupload_content_types"][i]
 
             uploaded_file = ActionDispatch::Http::UploadedFile.new(:tempfile=>File.new(file), :content_type=>content_type, :filename=>original_filename)
 
-            req.params[object][method] << {submethod=>uploaded_file}
+            form_hash[object][method] << {submethod=>uploaded_file}
           end
         else
-          req.params[object][method] = req.params["file"] 
+          form_hash[object][method] = form_hash["file"] 
         end
       end 
 

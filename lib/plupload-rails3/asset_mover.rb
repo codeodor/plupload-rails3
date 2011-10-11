@@ -20,12 +20,12 @@ end
 def install_plupload_assets  
   plupload_asset_destination.keys.each do |asset_type|
     directory = File.join(Rails.root, plupload_asset_destination[asset_type])
-    puts "Making directory: #{directory}"
+    puts "Making directory: #{directory}/plupload-rails3"
     FileUtils.mkdir_p(directory)
   end
   
   dest = File.join(Rails.root, plupload_asset_destination[:img])
-  puts "Copying image assets to #{dest}"
+  puts "Copying image assets to #{dest}/plupload-rails3"
   FileUtils.cp_r(File.join(File.dirname(__FILE__), '../public/images/plupload-rails3'), dest)
   
   dest = File.join(Rails.root, plupload_asset_destination[:js])
