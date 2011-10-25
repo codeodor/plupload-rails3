@@ -1,6 +1,7 @@
 class PluploadRailsController < ActionController::Base
   def _plupload_uploader
     plupload_temp_path = "tmp/plupload-rails3/#{File.basename(params[:file].tempfile.path)}"
+    params[:file].tempfile.close unless params[:file].tempfile.closed?
     FileUtils.mv(params[:file].tempfile, plupload_temp_path)
     add_fields_for_files_to_forms =<<END
       function _pluploadRails_addFieldsForFilesToForms(){
