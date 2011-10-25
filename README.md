@@ -74,6 +74,9 @@ Also in the view, you'll need to tell it where to go:
 @library_file should be your model, where :payload is the method which holds the file contents, so that when plupload uploads the files (it hits #create once for each file) it will put the uploaded file in params[:library_file][:payload] which you can then read like this in your controller:
 
     params[:library_file][:payload] = params[:library_file][:payload].read
+    # Note: there is no need to do this with libraries that expect an instance of 
+    # UplodedFile as opposed to the contents. For example, with CarrierWave, leave
+    # this line out.
 
 Then if you're storing it in the DB, you let it continue on to 
 
