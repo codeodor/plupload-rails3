@@ -51,6 +51,7 @@ Options can be:
 * :filters => An array of hashes with :title and :extension keys specifying the files to look for. Defaults to [], which will show all files. 
 * :pluploader => a value of `true` indicates that you want to have the files submitted with your form instead of in individual requests. To make this work, you need to add `match 'plupload_rails/_plupload_uploader', :controller=>'plupload_rails', :action=>'_plupload_uploader', :as=>'pluploader'` to your config/routes.rb file so plupload can upload the files, and then this plugin will insert some extra form fields into your page via JavaScript. Those fields tell the middleware how to form the request parameters before they get to your controller.
 * :field_name => the name of the field, which defaults to model_name[method_name]
+* :runtimes => the comma delimited list of runtimes you want to use, in order of preference. Defaults to 'html5,flash,silverlight,gears,browserplus'
 
 Example filter: 
     

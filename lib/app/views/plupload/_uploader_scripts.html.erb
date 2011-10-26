@@ -33,7 +33,7 @@
     var authtoken = $("input[name=authenticity_token]").val();
     $("#<%= options[:plupload_container] %>").pluploadQueue({
       // General settings
-      runtimes : 'html5,flash,silverlight,gears,browserplus',
+      runtimes : '<%= options[:runtimes] %>',
       <% unless options[:pluploader] %>
         url : '<%= url_for(model_object) %>',
       <% else %>
