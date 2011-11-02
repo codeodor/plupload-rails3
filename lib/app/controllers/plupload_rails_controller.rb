@@ -5,32 +5,32 @@ class PluploadRailsController < ActionController::Base
     FileUtils.mv(params[:file].tempfile, plupload_temp_path)
     add_fields_for_files_to_forms =<<END
       function _pluploadRails_addFieldsForFilesToForms(){
-        for(var i=0; document.forms.length; i++) {
-          var theForm = document.forms[i];
-          var input = document.createElement("input");
-          input.name='_plupload_files[]';
-          input.type='hidden';
-          input.value='#{File.expand_path(params[:file].tempfile.path)}';
-          theForm.appendChild(input);
+        $('form').each(function() {
+          var theForm = $(this);
           
-          var input = document.createElement("input");
-          input.name='_plupload_original_names[]';
-          input.type='hidden';
-          input.value='#{params[:file].original_filename}';
-          theForm.appendChild(input);
+          var default_input = $('<input />').attr('type', 'hidden');
           
-          var input = document.createElement("input");
-          input.name='_plupload_content_types[]';
-          input.type='hidden';
-          input.value='#{params[:file].content_type}';
-          theForm.appendChild(input);
+          var input = default_input.clone()
+          .attr('name', '_plupload_files[]')
+          .val('#{File.expand_path(params[:file].tempfile.path)}');
+          theForm.append(input);
           
-          var input = document.createElement("input");
-          input.name='_plupload_upload';
-          input.type='hidden';
-          input.value='#{params[:_plupload_upload]}';
-          if(document.getElementsByName(input.name).length == 0) theForm.appendChild(input);
-        }
+          var input = default_input.clone()
+          .attr('name', '_plupload_original_names[]')
+          .val('#{params[:file].original_filename}');
+          theForm.append(input);
+          
+          var input = default_input.clone()
+          .attr('name', '_plupload_content_types[]')
+          .val('#{params[:file].content_type}');
+          theForm.append(input);
+          
+          var input = default_input.clone()
+          .attr('name', '_plupload_upload')
+          .val('#{params[:_plupload_upload]}');
+          if(document.getElementsByName(input.name).length == 0) theForm.append(input);
+        
+        });
       }
       _pluploadRails_addFieldsForFilesToForms();
 END
