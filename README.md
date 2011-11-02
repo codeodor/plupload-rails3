@@ -90,7 +90,7 @@ Consider the common case of an Album which has_many Photos.
 
 In your form for an album, you can use:
 
-    <%= plupload(@album, :photos, options={:plupload_container=>'uploader', :pluploader=>true, :field_name=>'album[photos][][payload]'}) %>
+    <%= plupload(@album, :photos, options={:plupload_container=>'uploader', :pluploader=>true, :field_name=>'album[photos_attributes][][payload]'}) %>
   <div id="uploader" name="uploader" style="width: 100%;"></div>
 
 
