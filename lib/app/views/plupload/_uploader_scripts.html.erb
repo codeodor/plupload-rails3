@@ -45,7 +45,7 @@
       multipart: true,
       multipart_params : 
       $.extend({
-          <% if options[:params].count > 0 %>'<%= CGI::unescape(options[:params].to_query.split("=").join("':'")) %>'<% end %>
+          <% if options[:params].count > 0 %>'<%= CGI::unescape(options[:params].to_param).split("=").join("':'").gsub("&", "', '") %>'<% end %>
         }, 
         {
           authenticity_token : authtoken, 
