@@ -38,17 +38,17 @@ def install_plupload_assets
   
   dest = File.join(Rails.root, 'tmp/plupload-rails3')
   puts "Creating tmp folder at #{dest}"
-  FileUtils.mkdir(dest)
+  FileUtils.mkdir(dest) unless File.exists?(dest)
 end
 
 def uninstall_plupload_assets
   plupload_asset_destination.keys.each do |asset_type|
     directory = File.join(Rails.root, plupload_asset_destination[asset_type], "plupload-rails3")
     puts "Removing directory #{directory} and its contents"
-    FileUtils.rm_r(directory)
+    FileUtils.rm_r(directory) if File.exists?(directory)
   end
   
   directory = File.join(Rails.root,'tmp/plupload-rails3')
   puts "Removing directory #{directory} and its contents"
-  FileUtils.rm_r(directory)
+  FileUtils.rm_r(directory) if File.exists?(directory)
 end
